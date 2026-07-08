@@ -414,9 +414,9 @@ export default function App() {
 
       setActiveRoomId(code);
       setQuote(selected);
-    } catch (err) {
+    } catch (err: any) {
       console.error("Error creating room: ", err);
-      setMultiplayerError("Өрөө үүсгэхэд алдаа гарлаа. Дахин оролдоно уу.");
+      setMultiplayerError(`Өрөө үүсгэхэд алдаа гарлаа: ${err?.message || err}`);
     } finally {
       setIsRoomCreating(false);
     }
@@ -479,9 +479,9 @@ export default function App() {
         source: data.quoteAuthor,
         difficulty: data.quoteDifficulty
       });
-    } catch (err) {
+    } catch (err: any) {
       console.error("Error joining room: ", err);
-      setMultiplayerError("Өрөөнд холбогдоход алдаа гарлаа.");
+      setMultiplayerError(`Өрөөнд холбогдоход алдаа гарлаа: ${err?.message || err}`);
     } finally {
       setIsRoomJoining(false);
     }
